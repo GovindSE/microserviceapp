@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-deployment
+  
+  namespace: microservices
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: product
+  template:
+    metadata:
+      labels:
+        app: product
+    spec:
+      containers:
+      - name: product
+        image: govinds1209/service-product
+        ports:
+        - containerPort: 5002
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-service
+  namespace: microservices
+spec:
+  selector:
+    app.kubernetes.io/name: product
+  ports:
+    - protocol: TCP
+      port: 5002
+      targetPort: 3001
+  type: Nodeport
