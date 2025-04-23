@@ -32,4 +32,4 @@ spec:
     - protocol: TCP
       port: 5001
       targetPort: 3001
-  type: Nodeport
+  type: NodePort
