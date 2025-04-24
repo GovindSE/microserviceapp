@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: product
-        image: govinds1209/service-product
+        image: govinds1209/user-product:latest
         ports:
         - containerPort: 5002
 ---
